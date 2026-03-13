@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { Routes, Route } from "react-router";
 import { CustomCursor } from "./components/CustomCursor";
 import { GalleryGrid } from "./components/GalleryGrid";
+import { Nav } from "./components/Nav";
+import About from "./pages/About";
 
-export default function App() {
+function Home() {
   const [isHovering, setIsHovering] = useState(false);
 
   return (
@@ -16,13 +19,10 @@ export default function App() {
       <header className="px-10 pt-10 pb-16">
         <div className="content-stretch flex flex-col gap-[64px] items-start leading-[normal] not-italic relative w-full">
           {/* Navigation */}
-          <div className="capitalize content-stretch flex items-center justify-between relative shrink-0 text-[#565656] text-[12px] text-right tracking-[0.96px] w-full whitespace-nowrap">
-            <div className="content-stretch flex gap-[32px] items-center relative shrink-0">
-              <a href="#" className="relative shrink-0 hover:text-black transition-colors cursor-none">About</a>
-              <a href="#" className="relative shrink-0 hover:text-black transition-colors cursor-none">Resume</a>
-            </div>
-            <p className="relative shrink-0">english</p>
-          </div>
+          <Nav
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+          />
 
           {/* Hero Section */}
           <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 max-w-[557px]">
@@ -43,16 +43,19 @@ export default function App() {
 
       {/* Footer */}
       <footer className="mx-10 py-8 border-t border-black/10 flex items-center justify-between">
-        <span className="text-black/20" style={{ fontSize: "11px" }}>
-          © 2026 Galeria Criativa
-        </span>
-        <span
-          className="text-[#565656]/60 uppercase tracking-widest"
-          style={{ fontSize: "10px" }}
-        >
-          Design &amp; Identidade
+        <span className="text-black/20 text-[14px]">
+          © 2026 VITOR C. COSTA. - TODOS OS DIREITOS RESERVADOS.
         </span>
       </footer>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+    </Routes>
   );
 }

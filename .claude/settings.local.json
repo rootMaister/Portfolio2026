@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__plugin_figma_figma__get_design_context",
+      "Bash(grep -r \"useScroll\\\\|useInView\\\\|whileInView\\\\|useTransform\\\\|useSpring\\\\|scroll\\\\\\(\" /c/Users/vcost/Downloads/Portfolio2026/src --include=*.tsx --include=*.ts --include=*.jsx --include=*.js)"
+    ]
+  }
+}

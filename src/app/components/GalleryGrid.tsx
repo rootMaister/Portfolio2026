@@ -127,7 +127,7 @@ export function GalleryGrid({ onHoverChange }: GalleryGridProps) {
               transition={{ duration: 0.35, ease: "easeOut" }}
             >
               <span
-                className="text-[#ddbb95] uppercase tracking-[0.15em]"
+                className="text-[#fff] uppercase tracking-[0.15em]"
                 style={{ fontSize: "10px", fontWeight: 500 }}
               >
                 {item.category}
@@ -139,7 +139,7 @@ export function GalleryGrid({ onHoverChange }: GalleryGridProps) {
 
             {/* Corner accent */}
             <motion.div
-              className="absolute top-4 right-4 w-6 h-6 border-t border-r border-[#ddbb95]"
+              className="absolute top-4 right-4 w-6 h-6 border-t border-r border-[#fff]"
               animate={{ opacity: isHovered ? 1 : 0, scale: isHovered ? 1 : 0.6 }}
               transition={{ duration: 0.3, delay: 0.05 }}
             />
