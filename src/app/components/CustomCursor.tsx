@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, useMotionValue, useSpring } from "motion/react";
 
 interface CustomCursorProps {
@@ -40,7 +41,7 @@ export function CustomCursor({ isHovering }: CustomCursorProps) {
     };
   }, [cursorX, cursorY]);
 
-  return (
+  return createPortal(
     <>
       {/* Large ring cursor */}
       <motion.div
@@ -98,6 +99,7 @@ export function CustomCursor({ isHovering }: CustomCursorProps) {
         }}
         transition={{ duration: 0.2 }}
       />
-    </>
+    </>,
+    document.body
   );
 }

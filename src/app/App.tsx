@@ -1,16 +1,23 @@
-import { useState } from "react";
-import { Routes, Route } from "react-router";
+import { useEffect, useRef, useState } from "react";
+import { Routes, Route, useLocation } from "react-router";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { CustomCursor } from "./components/CustomCursor";
 import { GalleryGrid } from "./components/GalleryGrid";
 import { Nav } from "./components/Nav";
+import { ProjectModal } from "./components/ProjectModal";
 import About from "./pages/About";
+
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 function Home() {
   const [isHovering, setIsHovering] = useState(false);
+  const [selectedProjectId, setSelectedProjectId] = useState<number | null>(null);
 
   return (
     <div
-      className="min-h-screen bg-[#f2f2f2] cursor-none overflow-x-hidden"
+      className="min-h-screen bg-[#f2f2f2] cursor-none"
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
       <CustomCursor isHovering={isHovering} />
@@ -18,13 +25,7 @@ function Home() {
       {/* Header */}
       <header className="px-10 pt-10 pb-16">
         <div className="content-stretch flex flex-col gap-[64px] items-start leading-[normal] not-italic relative w-full">
-          {/* Navigation */}
-          <Nav
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-          />
-
-          {/* Hero Section */}
+          <Nav />
           <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 max-w-[557px]">
             <h1 className="font-['Hedvig_Letters_Serif',sans-serif] relative shrink-0 text-[26px] text-black tracking-[1.04px] w-full">
               Vitor C. Costa
@@ -36,26 +37,65 @@ function Home() {
         </div>
       </header>
 
-      {/* Gallery */}
       <main className="px-10 pb-16">
-        <GalleryGrid onHoverChange={setIsHovering} />
+        <GalleryGrid
+          onHoverChange={setIsHovering}
+          onProjectClick={setSelectedProjectId}
+        />
       </main>
 
-      {/* Footer */}
       <footer className="mx-10 py-8 border-t border-black/10 flex items-center justify-between">
         <span className="text-black/20 text-[14px]">
           © 2026 VITOR C. COSTA. - TODOS OS DIREITOS RESERVADOS.
         </span>
       </footer>
+
+      <ProjectModal
+        projectId={selectedProjectId}
+        onClose={() => setSelectedProjectId(null)}
+      />
+    </div>
+  );
+}
+
+function ScrollSmootherWrapper({ children }: { children: React.ReactNode }) {
+  const smootherRef = useRef<ScrollSmoother | null>(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    smootherRef.current = ScrollSmoother.create({
+      wrapper: "#smooth-wrapper",
+      content: "#smooth-content",
+      smooth: 1.5,
+      smoothTouch: 0.1,
+      normalizeScroll: true,
+    });
+
+    return () => {
+      smootherRef.current?.kill();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
+
+  // Scroll to top on route change
+  useEffect(() => {
+    smootherRef.current?.scrollTo(0, false);
+  }, [location.pathname]);
+
+  return (
+    <div id="smooth-wrapper">
+      <div id="smooth-content">{children}</div>
     </div>
   );
 }
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-    </Routes>
+    <ScrollSmootherWrapper>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </ScrollSmootherWrapper>
   );
 }

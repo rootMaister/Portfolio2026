@@ -135,7 +135,7 @@
 
   html {
     font-size: var(--font-size);
-    scroll-behavior: smooth;
+    cursor: none;
   }
 
   h1 {

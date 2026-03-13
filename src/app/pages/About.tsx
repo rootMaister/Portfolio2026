@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { motion } from "motion/react";
 import { CustomCursor } from "../components/CustomCursor";
 import { Nav } from "../components/Nav";
@@ -67,7 +66,7 @@ const skills = [
 ];
 
 export default function About() {
-  const [isHovering, setIsHovering] = useState(false);
+  const isHovering = false;
 
   return (
     <div
@@ -78,10 +77,7 @@ export default function About() {
 
       {/* Header / Nav */}
       <header className="px-10 pt-10 pb-6">
-        <Nav
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}
-        />
+        <Nav />
       </header>
 
       {/* Hero */}
