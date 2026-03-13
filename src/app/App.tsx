@@ -23,7 +23,7 @@ function Home() {
       <CustomCursor isHovering={isHovering} />
 
       {/* Header */}
-      <header className="px-10 pt-10 pb-16">
+      <header className="px-5 sm:px-10 pt-10 pb-16">
         <div className="content-stretch flex flex-col gap-[64px] items-start leading-[normal] not-italic relative w-full">
           <Nav />
           <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 max-w-[557px]">
@@ -37,14 +37,14 @@ function Home() {
         </div>
       </header>
 
-      <main className="px-10 pb-16">
+      <main className="px-5 sm:px-10 pb-16">
         <GalleryGrid
           onHoverChange={setIsHovering}
           onProjectClick={setSelectedProjectId}
         />
       </main>
 
-      <footer className="mx-10 py-8 border-t border-black/10 flex items-center justify-between">
+      <footer className="mx-5 sm:mx-10 py-8 border-t border-black/10 flex items-center justify-between">
         <span className="text-black/20 text-[14px]">
           © 2026 VITOR C. COSTA. - TODOS OS DIREITOS RESERVADOS.
         </span>

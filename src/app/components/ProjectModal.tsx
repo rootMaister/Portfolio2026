@@ -23,7 +23,7 @@ function Block({ block, index }: { block: ContentBlock; index: number }) {
           className={
             block.size === "sm"
               ? "text-[20px] font-medium text-[#111] leading-snug"
-              : "text-[38px] leading-[48px] text-[#0a0a0a]"
+              : "text-[24px] leading-[32px] sm:text-[38px] sm:leading-[48px] text-[#0a0a0a]"
           }
           style={
             block.size !== "sm"
@@ -46,6 +46,17 @@ function Block({ block, index }: { block: ContentBlock; index: number }) {
         </motion.p>
       );
 
+    case "list":
+      return (
+        <motion.ul className="flex flex-col gap-2 pl-5 list-disc max-w-[680px]" {...inView(delay)}>
+          {block.items.map((item, i) => (
+            <li key={i} className="text-[#3a3a3a] text-[16px] font-light leading-[28px]">
+              {item}
+            </li>
+          ))}
+        </motion.ul>
+      );
+
     case "label":
       return (
         <motion.p
@@ -65,12 +76,10 @@ function Block({ block, index }: { block: ContentBlock; index: number }) {
           <img
             src={block.src}
             alt={block.alt ?? ""}
-            className={`rounded-[4px] object-cover w-full ${
-              block.full ? "max-h-[560px]" : "max-h-[400px]"
-            }`}
+            className="rounded-[4px] w-full h-auto max-h-[900px] object-contain"
           />
           {block.caption && (
-            <figcaption className="text-[#999] text-[13px] font-light">
+            <figcaption className="text-[#999] text-[13px] font-light text-center">
               {block.caption}
             </figcaption>
           )}
@@ -79,7 +88,7 @@ function Block({ block, index }: { block: ContentBlock; index: number }) {
 
     case "gallery":
       return (
-        <motion.div className="grid grid-cols-2 gap-3" {...inView(delay)}>
+        <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-3" {...inView(delay)}>
           {block.images.map((img, i) => (
             <img
               key={i}
@@ -93,7 +102,7 @@ function Block({ block, index }: { block: ContentBlock; index: number }) {
 
     case "metrics":
       return (
-        <motion.div className="flex gap-[64px]" {...inView(delay)}>
+        <motion.div className="flex flex-wrap gap-8 sm:gap-[64px]" {...inView(delay)}>
           {block.items.map((m) => (
             <div key={m.label} className="flex flex-col gap-1">
               <span
@@ -106,6 +115,26 @@ function Block({ block, index }: { block: ContentBlock; index: number }) {
             </div>
           ))}
         </motion.div>
+      );
+
+    case "video":
+      return (
+        <motion.figure className="flex flex-col gap-3" {...inView(delay)}>
+          <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+            <iframe
+              src={block.src}
+              className="absolute inset-0 w-full h-full rounded-[4px]"
+              style={{ border: "none" }}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          {block.caption && (
+            <figcaption className="text-[#999] text-[13px] font-light text-center">
+              {block.caption}
+            </figcaption>
+          )}
+        </motion.figure>
       );
 
     default:
@@ -199,7 +228,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
             </motion.div>
 
             {/* Content blocks */}
-            <article className="px-[80px] py-[64px] flex flex-col gap-[40px]">
+            <article className="px-5 py-8 sm:px-[40px] sm:py-[48px] md:px-[80px] md:py-[64px] flex flex-col gap-[40px]">
               {project.blocks.map((block, i) => (
                 <Block key={i} block={block} index={i} />
               ))}

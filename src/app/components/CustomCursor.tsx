@@ -96,6 +96,7 @@ export function CustomCursor({ isHovering }: CustomCursorProps) {
           height: isHovering ? 6 : 6,
           opacity: visible ? (isHovering ? 0.5 : 1) : 0,
           backgroundColor: isHovering ? "#ffffff" : "#565656",
+          backgroundImage: isHovering ? "background-image: src ('/cursor-dot-hover.svg')" : "none",
         }}
         transition={{ duration: 0.2 }}
       />

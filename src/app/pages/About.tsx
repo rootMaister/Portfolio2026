@@ -76,18 +76,18 @@ export default function About() {
       <CustomCursor isHovering={isHovering} />
 
       {/* Header / Nav */}
-      <header className="px-10 pt-10 pb-6">
+      <header className="px-5 sm:px-10 pt-10 pb-6">
         <Nav />
       </header>
 
       {/* Hero */}
-      <section className="px-[120px] pt-[60px] pb-[80px] flex items-start justify-between gap-16">
+      <section className="px-5 sm:px-10 lg:px-[120px] pt-[60px] pb-[80px] flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-16">
         <motion.div className="flex flex-col gap-5 max-w-[580px]" {...fadeUp(0)}>
           <p className="text-[#666] text-[14px] tracking-[2.5px] uppercase font-medium">
             UX/UI &amp; PRODUCT DESIGNER
           </p>
           <h1
-            className="text-[#0a0a0a] text-[60px] leading-[68px]"
+            className="text-[#0a0a0a] text-[40px] leading-[48px] sm:text-[52px] sm:leading-[60px] lg:text-[60px] lg:leading-[68px]"
             style={{ fontFamily: "'Hedvig Letters Serif', serif", fontWeight: 400 }}
           >
             Vitor C. Costa
@@ -106,7 +106,7 @@ export default function About() {
           </p>
         </motion.div>
         <motion.div
-          className="shrink-0 w-[400px] h-[500px] rounded-[4px] overflow-hidden"
+          className="w-full h-[300px] sm:h-[400px] lg:w-[400px] lg:h-[500px] lg:shrink-0 rounded-[4px] overflow-hidden"
           {...fadeUp(0.12)}
         >
           <img
@@ -118,7 +118,7 @@ export default function About() {
       </section>
 
       {/* Experience */}
-      <section className="px-[120px] py-[60px]">
+      <section className="px-5 sm:px-10 lg:px-[120px] py-[60px]">
         <motion.div className="w-full h-px bg-[#ebebeb] mb-[44px]" {...inView()} />
         <motion.p
           className="text-[#666] text-[14px] tracking-[2.5px] uppercase font-medium mb-[56px]"
@@ -129,14 +129,14 @@ export default function About() {
         <div className="flex flex-col gap-[80px]">
           {experiences.map((exp, i) => (
             <motion.div key={exp.company} className="flex flex-col gap-[10px]" {...inView(i * 0.08)}>
-              <div className="flex items-baseline gap-[40px]">
-                <p className="text-[#111] text-[16px] font-medium whitespace-nowrap">
+              <div className="flex flex-wrap items-baseline gap-x-[24px] gap-y-1">
+                <p className="text-[#111] text-[16px] font-medium">
                   {exp.title}
                 </p>
-                <p className="text-[#545454] text-[14px] font-normal whitespace-nowrap">
+                <p className="text-[#545454] text-[14px] font-normal">
                   {exp.company}
                 </p>
-                <p className="ml-auto text-[#bbb] text-[14px] font-normal whitespace-nowrap">
+                <p className="sm:ml-auto text-[#bbb] text-[14px] font-normal">
                   {exp.period}
                 </p>
               </div>
@@ -149,7 +149,7 @@ export default function About() {
       </section>
 
       {/* Skills */}
-      <section className="px-[120px] py-[60px]">
+      <section className="px-5 sm:px-10 lg:px-[120px] py-[60px]">
         <motion.div className="w-full h-px bg-[#ebebeb] mb-[44px]" {...inView()} />
         <motion.p
           className="text-[#666] text-[14px] tracking-[2.5px] uppercase font-medium mb-[56px]"
@@ -159,8 +159,8 @@ export default function About() {
         </motion.p>
         <div className="flex flex-col gap-[40px]">
           {skills.map((skill, i) => (
-            <motion.div key={skill.label} className="flex items-baseline gap-[56px]" {...inView(i * 0.07)}>
-              <p className="text-[#454545] text-[14px] font-normal whitespace-nowrap w-[160px] shrink-0">
+            <motion.div key={skill.label} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-[56px]" {...inView(i * 0.07)}>
+              <p className="text-[#454545] text-[14px] font-normal sm:w-[160px] sm:shrink-0">
                 {skill.label}
               </p>
               <p className="text-[#333] text-[14px] font-light leading-[24px]">{skill.value}</p>
@@ -170,7 +170,7 @@ export default function About() {
       </section>
 
       {/* Education */}
-      <section className="px-[120px] py-[60px]">
+      <section className="px-5 sm:px-10 lg:px-[120px] py-[60px]">
         <motion.div className="w-full h-px bg-[#ebebeb] mb-[44px]" {...inView()} />
         <motion.p
           className="text-[#666] text-[14px] tracking-[2.5px] uppercase font-medium mb-[56px]"
@@ -178,8 +178,8 @@ export default function About() {
         >
           FORMAÇÃO
         </motion.p>
-        <motion.div className="flex items-baseline gap-[56px]" {...inView(0.1)}>
-          <p className="text-[#111] text-[16px] font-medium whitespace-nowrap w-[160px] shrink-0">
+        <motion.div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-[56px]" {...inView(0.1)}>
+          <p className="text-[#111] text-[16px] font-medium sm:w-[160px] sm:shrink-0">
             UNIP
           </p>
           <p className="text-[#666] text-[14px] font-light">
@@ -188,8 +188,28 @@ export default function About() {
         </motion.div>
       </section>
 
+      <section className="px-5 sm:px-10 lg:px-[120px] py-[60px]">
+        <motion.div className="w-full h-px bg-[#ebebeb] mb-[44px]" {...inView()} />
+        <motion.p
+          className="text-[#666] text-[14px] tracking-[2.5px] uppercase font-medium mb-[56px]"
+          {...inView(0.05)}
+        >
+          CURRICULO 
+        </motion.p>
+        <motion.div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-[56px]" {...inView(0.1)}>
+          <a
+            href="https://1drv.ms/b/c/f371275e835eed50/IQCHdKYOzbHGQImj6c6bh2IhAdRqBQvD9ZRAznrUv9IhHtE?e=sbhKse"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#111] text-[16px] font-medium sm:w-[160px] sm:shrink-0 hover:text-black transition-colors"
+          >
+            DOWNLOAD
+          </a>
+        </motion.div>
+      </section>
+
       {/* Footer */}
-      <footer className="mx-10 py-8 border-t border-black/10 flex items-center justify-between mt-8">
+      <footer className="mx-5 sm:mx-10 py-8 border-t border-black/10 flex items-center justify-between mt-8">
         <span className="text-black/20 text-[14px]">© 2026 Galeria Criativa</span>
         <span className="text-[#565656]/60 uppercase tracking-widest text-[14px]">
           Design &amp; Identidade
