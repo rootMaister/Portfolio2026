@@ -4,6 +4,15 @@ import { AnimatePresence, motion } from "motion/react";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { projects, type ContentBlock } from "../../data/projects";
 
+// ── Markdown bold parser ───────────────────────────────────────────────────────
+
+function parseBold(text: string) {
+  const parts = text.split(/\*\*(.*?)\*\*/g);
+  return parts.map((part, i) =>
+    i % 2 === 1 ? <strong key={i} className="font-semibold text-[#0a0a0a]">{part}</strong> : part
+  );
+}
+
 // ── Block renderer ────────────────────────────────────────────────────────────
 
 const inView = (delay = 0) => ({
@@ -42,8 +51,20 @@ function Block({ block, index }: { block: ContentBlock; index: number }) {
           className="text-[#3a3a3a] text-[16px] font-light leading-[28px] max-w-[680px]"
           {...inView(delay)}
         >
-          {block.body}
+          {parseBold(block.body)}
         </motion.p>
+      );
+
+    case "highlight":
+      return (
+        <motion.blockquote
+          className="border-l-[3px] border-[#0a0a0a] pl-6 py-1 max-w-[680px]"
+          {...inView(delay)}
+        >
+          <p className="text-[#0a0a0a] text-[20px] leading-[32px] font-light italic">
+            {parseBold(block.body)}
+          </p>
+        </motion.blockquote>
       );
 
     case "list":
@@ -193,38 +214,59 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
             className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
           >
           <motion.div
-            className="relative w-[85%] max-h-[90vh] bg-white rounded-[8px] overflow-y-auto cursor-none pointer-events-auto modal-scrollbar"
+            className="relative w-full sm:w-[55%] max-h-[90vh] bg-white rounded-[8px] overflow-y-auto cursor-none pointer-events-auto modal-scrollbar"
             style={{ fontFamily: "'Inter', sans-serif" } as React.CSSProperties}
             initial={{ opacity: 0, y: 40, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.97 }}
             transition={{ type: "spring", stiffness: 280, damping: 32 }}
           >
-            {/* Close button — sticky, mix-blend-mode:difference para contrastar com qualquer fundo */}
-            <button
-              onClick={onClose}
-              className="sticky top-8 float-right mr-8 w-8 h-8 flex items-center justify-center cursor-none z-10"
-              style={{ color: "#fff", mixBlendMode: "difference" }}
-              aria-label="Fechar"
-            >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M1 1L15 15M15 1L1 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            </button>
+            {/* Close button — sticky zero-height row, comes first so it floats over hero */}
+            <div className="sticky top-5 h-0 flex justify-end pr-5 z-20">
+              <motion.button
+                onClick={onClose}
+                className="w-9 h-9 rounded-full flex items-center justify-center cursor-none"
+                style={{ backgroundColor: "rgba(0,0,0,0.35)", backdropFilter: "blur(6px)", color: "#fff" }}
+                aria-label="Fechar"
+                whileHover={{ scale: 1.15, rotate: 90, backgroundColor: "rgba(0,0,0,0.55)" }}
+                whileTap={{ scale: 0.85 }}
+                transition={{ type: "spring", stiffness: 400, damping: 20 }}
+              >
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M1 1L15 15M15 1L1 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              </motion.button>
+            </div>
 
-            {/* Hero image */}
+            {/* Hero */}
             <motion.div
-              className="w-full bg-[#fff] flex items-center justify-center"
-              style={{ minHeight: "420px", maxHeight: "60vh" }}
+              className="relative w-full"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="max-w-full max-h-[60vh] w-auto h-auto object-contain p-8"
-              />
+              {project.video && !project.image && !project.banner ? (
+                <video
+                  src={project.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto block"
+                />
+              ) : project.banner ? (
+                <img
+                  src={project.banner}
+                  alt={project.title}
+                  className="w-full h-auto max-h-[60vh] object-cover block"
+                />
+              ) : project.image ? (
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-auto max-h-[60vh] object-cover block"
+                />
+              ) : null}
             </motion.div>
 
             {/* Content blocks */}

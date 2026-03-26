@@ -3,11 +3,49 @@ import { Routes, Route, useLocation } from "react-router";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { motion } from "motion/react";
 import { CustomCursor } from "./components/CustomCursor";
 import { GalleryGrid } from "./components/GalleryGrid";
 import { Nav } from "./components/Nav";
 import { ProjectModal } from "./components/ProjectModal";
 import About from "./pages/About";
+
+const NAME = "VITOR C. COSTA";
+
+function AnimatedName() {
+  return (
+    <div
+      className="w-full flex items-end overflow-visible select-none"
+      style={{ lineHeight: 1 }}
+    >
+      {NAME.split("").map((char, i) =>
+        char === " " ? (
+          <span key={i} style={{ flex: "0.6" }} />
+        ) : (
+          <motion.span
+            key={i}
+            whileHover={{ y: "-12%" }}
+            transition={{ type: "spring", stiffness: 600, damping: 28 }}
+            style={{
+              flex: 1,
+              textAlign: "center",
+              letterSpacing: "-0.04em",
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 900,
+              WebkitTextStroke: "5.5px black",
+              fontSize: "clamp(3.5rem, 8.8vw, 9rem)",
+              color: "#000",
+              display: "block",
+              cursor: "default",
+            }}
+          >
+            {char}
+          </motion.span>
+        )
+      )}
+    </div>
+  );
+}
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -24,16 +62,20 @@ function Home() {
 
       {/* Header */}
       <header className="px-5 sm:px-10 pt-10 pb-16">
-        <div className="content-stretch flex flex-col gap-[64px] items-start leading-[normal] not-italic relative w-full">
-          <Nav />
-          <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 max-w-[557px]">
-            <h1 className="font-['Hedvig_Letters_Serif',sans-serif] relative shrink-0 text-[26px] text-black tracking-[1.04px] w-full">
-              Vitor C. Costa
-            </h1>
-            <p className="font-['Inter',sans-serif] relative shrink-0 text-[#6e6e6e] text-[16px] text-justify tracking-[0.8px] w-full font-light leading-relaxed">
-              6 anos transformando pesquisa em interface e interface em resultado. Sou designer com experiência em todo o ciclo de produto — da descoberta à entrega. Trabalho com B2C, B2B e B2B2C, construindo experiências digitais consistentes, escaláveis e centradas nas pessoas que realmente as usam.
-            </p>
-          </div>
+        <Nav />
+
+        {/* Hero name — animated letters */}
+        <div className="mt-[9vh] mb-[9vh]">
+          <AnimatedName />
+        </div>
+
+        {/* Subtitle row — lines + centered text */}
+        <div className="flex items-center gap-4">
+          <div className="flex-1 h-px bg-black/15" />
+          <p className="text-[#6e6e6e] text-[16px] tracking-[0.6px] font-light whitespace-nowrap">
+            Há 6 anos transformando pesquisa em interface e interface em resultado.
+          </p>
+          <div className="flex-1 h-px bg-black/15" />
         </div>
       </header>
 

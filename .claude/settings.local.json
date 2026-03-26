@@ -9,7 +9,9 @@
       "Bash(cp \"C:/Users/vcost/Downloads/portfolio 2026 v2/Portfolio-v2-master/Portfolio-v2-master/public/images/project-1/apepe_thumbnail.jpg\" \"c:/Users/vcost/Downloads/Portfolio2026/src/app/components/img/project-1/\")",
       "Bash(cp \"C:/Users/vcost/Downloads/portfolio 2026 v2/Portfolio-v2-master/Portfolio-v2-master/public/images/project-1/main_screens.png\" \"c:/Users/vcost/Downloads/Portfolio2026/src/app/components/img/project-1/\")",
       "Bash(cp \"C:/Users/vcost/Downloads/portfolio 2026 v2/Portfolio-v2-master/Portfolio-v2-master/public/images/project-1/userflow_condominium-conection.png\" \"c:/Users/vcost/Downloads/Portfolio2026/src/app/components/img/project-1/\")",
-      "Bash(cp \"C:/Users/vcost/Downloads/portfolio 2026 v2/Portfolio-v2-master/Portfolio-v2-master/public/images/project-1/usability_test/\"*.png \"c:/Users/vcost/Downloads/Portfolio2026/src/app/components/img/project-1/usability_test/\")"
+      "Bash(cp \"C:/Users/vcost/Downloads/portfolio 2026 v2/Portfolio-v2-master/Portfolio-v2-master/public/images/project-1/usability_test/\"*.png \"c:/Users/vcost/Downloads/Portfolio2026/src/app/components/img/project-1/usability_test/\")",
+      "Read(//c/Users/vcost/Downloads/portfolio 2026 v2/Portfolio-v2-master/Portfolio-v2-master/public/**)",
+      "Read(//c/Users/vcost/Downloads/**)"
     ]
   }
 }

@@ -51,6 +51,7 @@ export function CustomCursor({ isHovering }: CustomCursorProps) {
           y,
           translateX: "-50%",
           translateY: "-50%",
+          mixBlendMode: "difference",
         }}
         animate={{
           width: isHovering ? 96 : 40,
@@ -62,18 +63,17 @@ export function CustomCursor({ isHovering }: CustomCursorProps) {
         <motion.div
           className="rounded-full border-2 size-full flex items-center justify-center"
           animate={{
-            borderColor: isHovering ? "rgba(255,255,255,0.8)" : "rgba(86,86,86,0.5)",
-            backgroundColor: isHovering ? "rgba(255,255,255,0.15)" : "rgba(86,86,86,0)",
+            borderColor: "rgba(255,255,255,0.9)",
+            backgroundColor: isHovering ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0)",
           }}
           transition={{ duration: 0.3 }}
         >
           <motion.span
-            className="uppercase tracking-widest select-none"
+            className="uppercase tracking-widest select-none text-white"
             style={{ fontSize: "10px", fontWeight: 500 }}
             animate={{
               opacity: isHovering ? 1 : 0,
               scale: isHovering ? 1 : 0.5,
-              color: isHovering ? "#ffffff" : "#565656",
             }}
             transition={{ duration: 0.2, ease: "easeOut" }}
           >
@@ -84,19 +84,18 @@ export function CustomCursor({ isHovering }: CustomCursorProps) {
 
       {/* Small dot cursor */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full"
+        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full bg-white"
         style={{
           x: dotX,
           y: dotY,
           translateX: "-50%",
           translateY: "-50%",
+          mixBlendMode: "difference",
         }}
         animate={{
-          width: isHovering ? 6 : 6,
-          height: isHovering ? 6 : 6,
-          opacity: visible ? (isHovering ? 0.5 : 1) : 0,
-          backgroundColor: isHovering ? "#ffffff" : "#565656",
-          backgroundImage: isHovering ? "background-image: src ('/cursor-dot-hover.svg')" : "none",
+          width: 6,
+          height: 6,
+          opacity: visible && !isHovering ? 1 : 0,
         }}
         transition={{ duration: 0.2 }}
       />
