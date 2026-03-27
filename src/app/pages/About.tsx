@@ -139,7 +139,7 @@ export default function About() {
         </motion.p>
         <motion.div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-[56px]" {...inView(0.1)}>
           <a
-            href="https://1drv.ms/b/c/f371275e835eed50/IQCHdKYOzbHGQImj6c6bh2IhAdRqBQvD9ZRAznrUv9IhHtE?e=sbhKse"
+            href="https://1drv.ms/b/c/f371275e835eed50/IQDj1FpyXf5rSbb1T390zJHFAXa9DUnUnfTpTRLWnUH3cA4?e=ML956e"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#111] text-[16px] font-medium sm:w-[160px] sm:shrink-0 hover:text-black transition-colors"
