@@ -168,7 +168,7 @@ function GalleryCard({ item, index, onHoverChange, onProjectClick }: CardProps) 
 export function GalleryGrid({ onHoverChange, onProjectClick }: GalleryGridProps) {
   return (
     <ResponsiveMasonry columnsCountBreakPoints={{ 640: 1, 1024: 2, 1280: 3 }}>
-      <Masonry gutter="12px">
+      <Masonry gutter="0px">
         {projects.map((item, index) => (
           <GalleryCard
             key={item.id}
