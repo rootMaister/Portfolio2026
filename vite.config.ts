@@ -1,7 +1,10 @@
 import { defineConfig } from 'vite'
 import path from 'path'
+import { fileURLToPath } from 'url'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   plugins: [
@@ -19,4 +22,8 @@ export default defineConfig({
 
   // File types to support raw imports. Never add .css, .tsx, or .ts files to this.
   assetsInclude: ['**/*.svg', '**/*.csv'],
+
+  base: '/',
+
 })
+
