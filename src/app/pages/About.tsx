@@ -25,28 +25,28 @@ const experiences = [
     company: "All Easy",
     period: "2025 — Atual",
     description:
-      "Criação e manutenção de design system escalável com documentação para múltiplas squads. Uso de IA como otimização no processo de pesquisa. Planejamento e execução de testes de usabilidade e melhorias contínuas.",
+      "Criação e manutenção de design system escalável adotado por todos os squads do produto. Redesigns com impacto direto na redução de chamados relacionados à interface e padronização visual consistente em toda a plataforma. Uso de IA como acelerador no processo de pesquisa e testes de usabilidade.",
   },
   {
     title: "Product Designer",
     company: "apepê",
     period: "2021 — 2025",
     description:
-      "Condução de todo o ciclo de design em app B2C com +14k usuários. Crescimento da base de 1.500 para 9.000+ usuários contribuindo com clareza, recorrência e confiança na navegação. Design system para múltiplas squads com handoff técnico e colaboração próxima com engenharia e produto.",
+      "Condução de todo o ciclo de design em app B2C com +14k usuários. Design que contribuiu para o crescimento da base de 1.500 para 9.000+ usuários — com foco em clareza, recorrência e confiança na navegação. Design system para múltiplas squads com handoff técnico e colaboração próxima com engenharia e produto.",
   },
   {
-    title: "UX/UI Designer",
+    title: "UX/UI Designer & Product Owner",
     company: "Spaceneedle Tecnologia",
     period: "2020 — 2021",
     description:
-      "Liderança em projeto de dashboard analítico com alto impacto operacional, reduzindo tempo de processamento de dados em mais de 90%. Concepção de soluções baseadas em dados e pesquisa com usuários-chave.",
+      "Atuação como Product Owner em projeto de dashboard analítico — fazendo a ponte entre o time de desenvolvimento responsável pelo processamento de dados e as necessidades do negócio, além do design das interfaces. O projeto resultou em redução de mais de 90% no tempo de processamento.",
   },
 ];
 
 const skills = [
   {
     label: "Ferramentas",
-    value: "Figma (avançado)  ·  ProtoPie  ·  Framer  ·  Adobe XD  ·  Photoshop  ·  Notion",
+    value: "Figma (avançado)  ·  ProtoPie  ·  Framer  ·  Photoshop  ·  Notion",
   },
   {
     label: "Design",
@@ -59,9 +59,13 @@ const skills = [
       "Entrevistas com usuários  ·  Mapeamento de jornada  ·  Benchmark  ·  Testes de usabilidade",
   },
   {
-    label: "Gestão & Dev",
+    label: "Produto & Gestão",
     value:
-      "Planejamento estratégico  ·  Backlog  ·  Conhecimento técnico em desenvolvimento  ·  Inglês avançado",
+      "Planejamento estratégico  ·  Gestão de backlog  ·  Colaboração com engenharia  ·  Handoff técnico",
+  },
+  {
+    label: "Idiomas",
+    value: "Português (nativo)  ·  Inglês (avançado)",
   },
 ];
 
@@ -94,15 +98,15 @@ export default function About() {
           </h1>
           <div className="w-[40px] h-px bg-[#ccc]" />
           <p className="text-[#3a3a3a] text-[16px] leading-[28px] font-light text-justify max-w-[540px]">
-            Sou de São Paulo, Brasil. Fora das telas, sou fotógrafo, atleta do
-            primeiro time LGBTQIAP+ de Rugby do Brasil e já viajei por 4 países
-            — experiências que moldaram minha visão sobre diversidade,
-            colaboração e como enxergar o mundo com outros olhos. Designer com 6
-            anos de experiência em produtos digitais B2C, B2B e B2B2C, atuando
-            em todo o ciclo do produto — da descoberta à entrega. Tenho forte
-            atuação em Design System, pesquisa com usuários e colaboração
-            próxima com produto e engenharia. Formação técnica em
-            desenvolvimento me permite dialogar com clareza com qualquer time.
+            Designer com 6 anos de experiência em produtos digitais — apps para
+            consumidores, plataformas B2B e ecossistemas integrados — atuando em
+            todo o ciclo do produto, da descoberta à entrega.
+            Forte atuação em Design System, pesquisa com usuários e colaboração
+            próxima com produto e engenharia. Formado em Análise e
+            Desenvolvimento de Sistemas, o que me permite dialogar com clareza
+            com times técnicos. De São Paulo, Brasil — fora das telas, fotógrafo,
+            atleta do primeiro time LGBTQIAP+ de Rugby do Brasil e curioso por
+            natureza: 4 países visitados e contando.
           </p>
         </motion.div>
         <motion.div
@@ -183,7 +187,7 @@ export default function About() {
             UNIP
           </p>
           <p className="text-[#666] text-[14px] font-light">
-            Análise e Desenvolvimento de Sistemas · Tecnólogo
+            Análise e Desenvolvimento de Sistemas · Tecnólogo · 2023
           </p>
         </motion.div>
       </section>
@@ -194,7 +198,7 @@ export default function About() {
           className="text-[#666] text-[14px] tracking-[2.5px] uppercase font-medium mb-[56px]"
           {...inView(0.05)}
         >
-          CURRICULO 
+          CURRÍCULO
         </motion.p>
         <motion.div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-[56px]" {...inView(0.1)}>
           <a
@@ -203,16 +207,45 @@ export default function About() {
             rel="noopener noreferrer"
             className="text-[#111] text-[16px] font-medium sm:w-[160px] sm:shrink-0 hover:text-black transition-colors"
           >
-            DOWNLOAD
+            Baixar PDF
           </a>
+          <p className="text-[#666] text-[14px] font-light">CV completo em português · PDF</p>
         </motion.div>
+      </section>
+
+      {/* Contact */}
+      <section className="px-5 sm:px-10 lg:px-[120px] py-[60px]">
+        <motion.div className="w-full h-px bg-[#ebebeb] mb-[44px]" {...inView()} />
+        <motion.p
+          className="text-[#666] text-[14px] tracking-[2.5px] uppercase font-medium mb-[56px]"
+          {...inView(0.05)}
+        >
+          CONTATO
+        </motion.p>
+        <div className="flex flex-col gap-[16px]">
+          <motion.a
+            href="mailto:vcostastudio@outlook.com"
+            className="text-[#111] text-[16px] font-medium hover:text-black transition-colors"
+            {...inView(0.08)}
+          >
+            vcostastudio@outlook.com
+          </motion.a>
+          <motion.a
+            href="https://www.linkedin.com/in/vitor-costa-288295b4/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#111] text-[16px] font-medium hover:text-black transition-colors"
+            {...inView(0.12)}
+          >
+            LinkedIn
+          </motion.a>
+        </div>
       </section>
 
       {/* Footer */}
       <footer className="mx-5 sm:mx-10 py-8 border-t border-black/10 flex items-center justify-between mt-8">
-        <span className="text-black/20 text-[14px]">© 2026 Galeria Criativa</span>
-        <span className="text-[#565656]/60 uppercase tracking-widest text-[14px]">
-          Design &amp; Identidade
+        <span className="text-black/20 text-[14px]">
+          © 2026 VITOR C. COSTA. - TODOS OS DIREITOS RESERVADOS.
         </span>
       </footer>
     </div>
