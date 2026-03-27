@@ -94,11 +94,22 @@ function Block({ block, index }: { block: ContentBlock; index: number }) {
     case "image":
       return (
         <motion.figure className="flex flex-col gap-3" {...inView(delay)}>
-          <img
-            src={block.src}
-            alt={block.alt ?? ""}
-            className="rounded-[4px] w-full h-auto max-h-[900px] object-contain"
-          />
+          {block.src.endsWith(".mp4") ? (
+            <video
+              src={block.src}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="rounded-[4px] w-full h-auto block"
+            />
+          ) : (
+            <img
+              src={block.src}
+              alt={block.alt ?? ""}
+              className="rounded-[4px] w-full h-auto max-h-[900px] object-contain"
+            />
+          )}
           {block.caption && (
             <figcaption className="text-[#999] text-[13px] font-light text-center">
               {block.caption}

@@ -11,8 +11,8 @@ export function CustomCursor({ isHovering }: CustomCursorProps) {
   const cursorY = useMotionValue(-100);
   const [visible, setVisible] = useState(false);
 
-  const springConfig = { damping: 22, stiffness: 300, mass: 0.5 };
-  const dotSpringConfig = { damping: 40, stiffness: 600, mass: 0.3 };
+  const springConfig = { damping: 22, stiffness: 1200, mass: 0.5 };
+  const dotSpringConfig = { damping: 40, stiffness: 2400, mass: 0.3 };
 
   const x = useSpring(cursorX, springConfig);
   const y = useSpring(cursorY, springConfig);

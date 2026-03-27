@@ -72,6 +72,7 @@ export const projects: Project[] = [
       { type: "image", src: "/img/controle-de-acesso/Image-2.jpg", alt: "Wireframes no quadro branco", caption: "Ideação inicial de interface no quadro branco" },
       { type: "divider" },
       { type: "heading", text: "Protótipo", size: "sm" },
+      { type: "image", src: "/img/controle-de-acesso/showreel.mp4", alt: "Showreel do fluxo de Controle de Acesso", caption: "Showreel do fluxo de Controle de Acesso" },
       { type: "image", src: "/img/controle-de-acesso/Image-3.jpg", alt: "Protótipo de alta fidelidade do Controle de Acesso", caption: "Protótipo de alta fidelidade — Histórico de Acesso" },
       { type: "image", src: "/img/controle-de-acesso/Frame 857.jpg", alt: "Histórico de acesso com modal de seleção de visitante", caption: "Fluxo de registro de acesso — seleção de visitante cadastrado" },
       { type: "image", src: "/img/controle-de-acesso/Frame 864.jpg", alt: "Formulário de cadastro de novo visitante", caption: "Formulário de cadastro de novo visitante" },
@@ -87,7 +88,6 @@ export const projects: Project[] = [
     category: "Product Design",
     size: "wide",
     video: "/img/project-1/thumbnail.mp4",
-    banner: "/img/project-1/banner_project.jpg",
     blocks: [
       { type: "label", text: "Product Design · apepê · 2023" },
       { type: "heading", text: "Cadastro & Vínculo Condominial", size: "lg" },
@@ -164,7 +164,7 @@ export const projects: Project[] = [
     title: "Redesign Physical Tracking",
     category: "Product Design",
     size: "normal",
-    video: "/img/physical-showcase.mp4",
+    video: "/img/physical/physical-showcase.mp4",
     blocks: [
       { type: "label", text: "Product Design · Fully · 2024" },
       { type: "heading", text: "Redesign Physical Tracking", size: "lg" },
