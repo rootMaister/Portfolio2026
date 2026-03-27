@@ -71,11 +71,11 @@ function Home() {
 
         {/* Subtitle row — lines + centered text */}
         <div className="flex items-center gap-4">
-          <div className="flex-1 h-px bg-black/15" />
-          <p className="text-[#6e6e6e] text-[16px] tracking-[0.6px] font-light whitespace-nowrap">
+          {/* <div className="flex-1 h-px bg-black/15" /> */}
+          <p className="text-[#6e6e6e] text-[16px] tracking-[0.6px] font-light whitespace-nowrap w-full text-center">
             Há 6 anos transformando pesquisa em interface e interface em resultado.
           </p>
-          <div className="flex-1 h-px bg-black/15" />
+          {/* <div className="flex-1 h-px bg-black/15" /> */}
         </div>
       </header>
 
