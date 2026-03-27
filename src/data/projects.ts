@@ -138,7 +138,6 @@ export const projects: Project[] = [
     category: "Product Design",
     size: "wide",
     video: "/img/project-1/thumbnail.mp4",
-    banner: "/img/project-1/banner_project.jpg",
     blocks: [
       { type: "label", text: "Product Design · apepê · 2023" },
       { type: "heading", text: "Cadastro & Vínculo Condominial", size: "lg" },
