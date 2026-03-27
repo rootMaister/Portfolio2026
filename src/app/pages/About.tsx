@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
 import { CustomCursor } from "../components/CustomCursor";
 import { Nav } from "../components/Nav";
+import { useLang } from "../../context/LanguageContext";
+import { t } from "../../data/translations";
 
 // Hero (above fold) — fires immediately on load
 const fadeUp = (delay: number) => ({
@@ -19,65 +21,17 @@ const inView = (delay = 0) => ({
 
 const imgSuaFoto = "/img/IMG_5913 SMALL.jpg";
 
-const experiences = [
-  {
-    title: "UX/UI Designer",
-    company: "All Easy",
-    period: "2025 — Atual",
-    description:
-      "Criação e manutenção de design system escalável adotado por todos os squads do produto. Redesigns com impacto direto na redução de chamados relacionados à interface e padronização visual consistente em toda a plataforma. Uso de IA como acelerador no processo de pesquisa e testes de usabilidade.",
-  },
-  {
-    title: "Product Designer",
-    company: "apepê",
-    period: "2021 — 2025",
-    description:
-      "Condução de todo o ciclo de design em app B2C com +14k usuários. Design que contribuiu para o crescimento da base de 1.500 para 9.000+ usuários — com foco em clareza, recorrência e confiança na navegação. Design system para múltiplas squads com handoff técnico e colaboração próxima com engenharia e produto.",
-  },
-  {
-    title: "UX/UI Designer & Product Owner",
-    company: "Spaceneedle Tecnologia",
-    period: "2020 — 2021",
-    description:
-      "Atuação como Product Owner em projeto de dashboard analítico — fazendo a ponte entre o time de desenvolvimento responsável pelo processamento de dados e as necessidades do negócio, além do design das interfaces. O projeto resultou em redução de mais de 90% no tempo de processamento.",
-  },
-];
-
-const skills = [
-  {
-    label: "Ferramentas",
-    value: "Figma (avançado)  ·  ProtoPie  ·  Framer  ·  Photoshop  ·  Notion",
-  },
-  {
-    label: "Design",
-    value:
-      "Wireframing  ·  Prototipação  ·  Design System  ·  UI Design  ·  Design Responsivo  ·  Micro interações  ·  Documentação",
-  },
-  {
-    label: "Pesquisa",
-    value:
-      "Entrevistas com usuários  ·  Mapeamento de jornada  ·  Benchmark  ·  Testes de usabilidade",
-  },
-  {
-    label: "Produto & Gestão",
-    value:
-      "Planejamento estratégico  ·  Gestão de backlog  ·  Colaboração com engenharia  ·  Handoff técnico",
-  },
-  {
-    label: "Idiomas",
-    value: "Português (nativo)  ·  Inglês (avançado)",
-  },
-];
-
 export default function About() {
-  const isHovering = false;
+  const { lang } = useLang();
+  const tr = t[lang];
+  const about = tr.about;
 
   return (
     <div
       className="min-h-screen bg-white cursor-none overflow-x-hidden"
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
-      <CustomCursor isHovering={isHovering} />
+      <CustomCursor isHovering={false} />
 
       {/* Header / Nav */}
       <header className="px-5 sm:px-10 pt-10 pb-6">
@@ -88,7 +42,7 @@ export default function About() {
       <section className="px-5 sm:px-10 lg:px-[120px] pt-[60px] pb-[80px] flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-16">
         <motion.div className="flex flex-col gap-5 max-w-[580px]" {...fadeUp(0)}>
           <p className="text-[#666] text-[14px] tracking-[2.5px] uppercase font-medium">
-            UX/UI &amp; PRODUCT DESIGNER
+            {about.role}
           </p>
           <h1
             className="text-[#0a0a0a] text-[40px] leading-[48px] sm:text-[52px] sm:leading-[60px] lg:text-[60px] lg:leading-[68px]"
@@ -98,15 +52,7 @@ export default function About() {
           </h1>
           <div className="w-[40px] h-px bg-[#ccc]" />
           <p className="text-[#3a3a3a] text-[16px] leading-[28px] font-light text-justify max-w-[540px]">
-            Designer com 6 anos de experiência em produtos digitais — apps para
-            consumidores, plataformas B2B e ecossistemas integrados — atuando em
-            todo o ciclo do produto, da descoberta à entrega.
-            Forte atuação em Design System, pesquisa com usuários e colaboração
-            próxima com produto e engenharia. Formado em Análise e
-            Desenvolvimento de Sistemas, o que me permite dialogar com clareza
-            com times técnicos. De São Paulo, Brasil — fora das telas, fotógrafo,
-            atleta do primeiro time LGBTQIAP+ de Rugby do Brasil e curioso por
-            natureza: 4 países visitados e contando.
+            {about.bio}
           </p>
         </motion.div>
         <motion.div
@@ -128,21 +74,15 @@ export default function About() {
           className="text-[#666] text-[14px] tracking-[2.5px] uppercase font-medium mb-[56px]"
           {...inView(0.05)}
         >
-          EXPERIÊNCIA
+          {about.sectionExperience}
         </motion.p>
         <div className="flex flex-col gap-[80px]">
-          {experiences.map((exp, i) => (
+          {tr.experiences.map((exp, i) => (
             <motion.div key={exp.company} className="flex flex-col gap-[10px]" {...inView(i * 0.08)}>
               <div className="flex flex-wrap items-baseline gap-x-[24px] gap-y-1">
-                <p className="text-[#111] text-[16px] font-medium">
-                  {exp.title}
-                </p>
-                <p className="text-[#545454] text-[14px] font-normal">
-                  {exp.company}
-                </p>
-                <p className="sm:ml-auto text-[#bbb] text-[14px] font-normal">
-                  {exp.period}
-                </p>
+                <p className="text-[#111] text-[16px] font-medium">{exp.title}</p>
+                <p className="text-[#545454] text-[14px] font-normal">{exp.company}</p>
+                <p className="sm:ml-auto text-[#bbb] text-[14px] font-normal">{exp.period}</p>
               </div>
               <p className="text-[#555] text-[14px] font-light leading-[24px] max-w-[700px]">
                 {exp.description}
@@ -159,10 +99,10 @@ export default function About() {
           className="text-[#666] text-[14px] tracking-[2.5px] uppercase font-medium mb-[56px]"
           {...inView(0.05)}
         >
-          HABILIDADES
+          {about.sectionSkills}
         </motion.p>
         <div className="flex flex-col gap-[40px]">
-          {skills.map((skill, i) => (
+          {tr.skills.map((skill, i) => (
             <motion.div key={skill.label} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-[56px]" {...inView(i * 0.07)}>
               <p className="text-[#454545] text-[14px] font-normal sm:w-[160px] sm:shrink-0">
                 {skill.label}
@@ -180,25 +120,22 @@ export default function About() {
           className="text-[#666] text-[14px] tracking-[2.5px] uppercase font-medium mb-[56px]"
           {...inView(0.05)}
         >
-          FORMAÇÃO
+          {about.sectionEducation}
         </motion.p>
         <motion.div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-[56px]" {...inView(0.1)}>
-          <p className="text-[#111] text-[16px] font-medium sm:w-[160px] sm:shrink-0">
-            UNIP
-          </p>
-          <p className="text-[#666] text-[14px] font-light">
-            Análise e Desenvolvimento de Sistemas · Tecnólogo · 2023
-          </p>
+          <p className="text-[#111] text-[16px] font-medium sm:w-[160px] sm:shrink-0">UNIP</p>
+          <p className="text-[#666] text-[14px] font-light">{about.educationDesc}</p>
         </motion.div>
       </section>
 
+      {/* Resume */}
       <section className="px-5 sm:px-10 lg:px-[120px] py-[60px]">
         <motion.div className="w-full h-px bg-[#ebebeb] mb-[44px]" {...inView()} />
         <motion.p
           className="text-[#666] text-[14px] tracking-[2.5px] uppercase font-medium mb-[56px]"
           {...inView(0.05)}
         >
-          CURRÍCULO
+          {about.sectionResume}
         </motion.p>
         <motion.div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-[56px]" {...inView(0.1)}>
           <a
@@ -207,9 +144,9 @@ export default function About() {
             rel="noopener noreferrer"
             className="text-[#111] text-[16px] font-medium sm:w-[160px] sm:shrink-0 hover:text-black transition-colors"
           >
-            Baixar PDF
+            {about.resumeLink}
           </a>
-          <p className="text-[#666] text-[14px] font-light">CV completo em português · PDF</p>
+          <p className="text-[#666] text-[14px] font-light">{about.resumeDesc}</p>
         </motion.div>
       </section>
 
@@ -220,7 +157,7 @@ export default function About() {
           className="text-[#666] text-[14px] tracking-[2.5px] uppercase font-medium mb-[56px]"
           {...inView(0.05)}
         >
-          CONTATO
+          {about.sectionContact}
         </motion.p>
         <div className="flex flex-col gap-[16px]">
           <motion.a
@@ -245,7 +182,7 @@ export default function About() {
       {/* Footer */}
       <footer className="mx-5 sm:mx-10 py-8 border-t border-black/10 flex items-center justify-between mt-8">
         <span className="text-black/20 text-[14px]">
-          © 2026 VITOR C. COSTA. - TODOS OS DIREITOS RESERVADOS.
+          {t[lang].footer.rights}
         </span>
       </footer>
     </div>

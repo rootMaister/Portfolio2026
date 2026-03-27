@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { projects, type ContentBlock } from "../../data/projects";
+import { useLang } from "../../context/LanguageContext";
 
 // ── Markdown bold parser ───────────────────────────────────────────────────────
 
@@ -182,7 +183,9 @@ interface ProjectModalProps {
 }
 
 export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
+  const { lang } = useLang();
   const project = projectId !== null ? projects.find((p) => p.id === projectId) : null;
+  const blocks = project ? (lang === "en" ? project.blocksEn : project.blocks) : [];
 
   // Pause ScrollSmoother + lock body scroll while open
   useEffect(() => {
@@ -282,7 +285,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
 
             {/* Content blocks */}
             <article className="px-5 py-8 sm:px-[40px] sm:py-[48px] md:px-[80px] md:py-[64px] flex flex-col gap-[40px]">
-              {project.blocks.map((block, i) => (
+              {blocks.map((block, i) => (
                 <Block key={i} block={block} index={i} />
               ))}
             </article>

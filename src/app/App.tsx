@@ -9,6 +9,8 @@ import { GalleryGrid } from "./components/GalleryGrid";
 import { Nav } from "./components/Nav";
 import { ProjectModal } from "./components/ProjectModal";
 import About from "./pages/About";
+import { useLang } from "../context/LanguageContext";
+import { t } from "../data/translations";
 
 const NAME = "VITOR C. COSTA";
 
@@ -52,6 +54,8 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 function Home() {
   const [isHovering, setIsHovering] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState<number | null>(null);
+  const { lang } = useLang();
+  const tr = t[lang];
 
   return (
     <div
@@ -71,11 +75,9 @@ function Home() {
 
         {/* Subtitle row — lines + centered text */}
         <div className="flex items-center gap-4">
-          {/* <div className="flex-1 h-px bg-black/15" /> */}
           <p className="text-[#6e6e6e] text-[16px] tracking-[0.6px] font-light whitespace-nowrap w-full text-center">
-            Há 6 anos transformando pesquisa em interface e interface em resultado.
+            {tr.hero.subtitle}
           </p>
-          {/* <div className="flex-1 h-px bg-black/15" /> */}
         </div>
       </header>
 
@@ -88,7 +90,7 @@ function Home() {
 
       <footer className="mx-5 sm:mx-10 py-8 border-t border-black/10 flex items-center justify-between">
         <span className="text-black/20 text-[14px]">
-          © 2026 VITOR C. COSTA. - TODOS OS DIREITOS RESERVADOS.
+          {tr.footer.rights}
         </span>
       </footer>
 
