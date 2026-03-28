@@ -3,6 +3,7 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { motion } from "motion/react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { projects, type Project } from "../../data/projects";
+import { useLang } from "../../context/LanguageContext";
 
 interface GalleryGridProps {
   onHoverChange: (isHovering: boolean) => void;
@@ -18,6 +19,8 @@ interface CardProps {
 
 function GalleryCard({ item, index, onHoverChange, onProjectClick }: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const { lang } = useLang();
+  const title = lang === "en" ? item.titleEn : item.title;
   const videoRef = useRef<HTMLVideoElement>(null);
   const gifImgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -151,7 +154,7 @@ function GalleryCard({ item, index, onHoverChange, onProjectClick }: CardProps) 
           {item.category}
         </span>
         <span className="text-white" style={{ fontSize: "18px", fontWeight: 500 }}>
-          {item.title}
+          {title}
         </span>
       </motion.div>
 

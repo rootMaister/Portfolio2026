@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
-import { projects, type ContentBlock } from "../../data/projects";
+import { projects, type ContentBlock, type MotionCard } from "../../data/projects";
 import { useLang } from "../../context/LanguageContext";
 
 // ── Markdown bold parser ───────────────────────────────────────────────────────
@@ -168,6 +168,105 @@ function Block({ block, index }: { block: ContentBlock; index: number }) {
             </figcaption>
           )}
         </motion.figure>
+      );
+
+    case "motion-cards": {
+      const variantStyles = (v?: MotionCard["variant"]) => {
+        if (v === "success") return { border: "2px solid #639922", bg: "#EAF3DE" };
+        if (v === "error")   return { border: "2px solid #A32D2D", bg: "#FCEBEB" };
+        return { border: "none", bg: "#F5F5F3" };
+      };
+      const badgeBg = (v?: MotionCard["variant"]) => {
+        if (v === "success") return "bg-[#d4edbc] text-[#3a6010]";
+        if (v === "error")   return "bg-[#f9d0d0] text-[#8b1a1a]";
+        return "bg-[#ebebeb] text-[#555]";
+      };
+      const gridCols = block.columns === 3
+        ? "grid-cols-1 sm:grid-cols-3"
+        : "grid-cols-1 sm:grid-cols-2";
+
+      return (
+        <motion.div className="flex flex-col gap-4" {...inView(delay)}>
+          {block.intro && (
+            <p className="text-[#3a3a3a] text-[15px] font-light leading-[26px] max-w-[680px]">{block.intro}</p>
+          )}
+          <div className={`grid ${gridCols} gap-4`}>
+            {block.items.map((card, i) => {
+              const styles = variantStyles(card.variant);
+              return (
+                <div
+                  key={i}
+                  className="flex flex-col rounded-[6px] overflow-hidden"
+                  style={{ border: styles.border, outline: styles.border === "none" ? "1px solid #e8e8e8" : "none" }}
+                >
+                  <div
+                    className="w-full overflow-hidden"
+                    style={{ background: styles.bg }}
+                  >
+                    <video
+                      src={card.src}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      aria-label={card.title}
+                      className="w-full h-auto block max-h-[420px] object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2 p-4 bg-white">
+                    <p className="text-[#111] text-[14px] font-medium leading-snug">{card.title}</p>
+                    <div className="flex flex-wrap gap-1">
+                      {card.badges.map((b, j) => (
+                        <span
+                          key={j}
+                          className={`text-[11px] font-medium px-2 py-[3px] rounded-full ${badgeBg(j === 0 ? card.variant : undefined)}`}
+                        >
+                          {b.text}
+                        </span>
+                      ))}
+                    </div>
+                    {card.description && (
+                      <p className="text-[#777] text-[13px] font-light leading-[20px]">{card.description}</p>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          {block.note && (
+            <p className="text-[#888] text-[13px] font-light leading-[22px] italic border-l-2 border-[#ddd] pl-4">
+              {block.note}
+            </p>
+          )}
+        </motion.div>
+      );
+    }
+
+    case "timing-table":
+      return (
+        <motion.div className="overflow-x-auto rounded-[6px] border border-[#ebebeb]" {...inView(delay)}>
+          <table className="w-full text-[13px] border-collapse">
+            <thead>
+              <tr className="bg-[#F5F5F3]">
+                {["Animação", "Tipo", "Duração", "Easing"].map((h) => (
+                  <th key={h} className="text-left text-[#666] font-medium tracking-wider uppercase text-[11px] px-4 py-3 border-b border-[#ebebeb]">
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.items.map((row, i) => (
+                <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-[#fafafa]"}>
+                  <td className="px-4 py-3 text-[#222] font-light border-b border-[#f0f0f0]">{row.animation}</td>
+                  <td className="px-4 py-3 text-[#555] font-light border-b border-[#f0f0f0]">{row.kind}</td>
+                  <td className="px-4 py-3 text-[#555] font-light border-b border-[#f0f0f0]">{row.duration}</td>
+                  <td className="px-4 py-3 text-[#555] font-light border-b border-[#f0f0f0]">{row.easing}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </motion.div>
       );
 
     default:

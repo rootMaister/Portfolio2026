@@ -1,3 +1,11 @@
+export type MotionCard = {
+  src: string;
+  title: string;
+  badges: { text: string }[];
+  description: string;
+  variant?: "success" | "error";
+};
+
 export type ContentBlock =
   | { type: "heading"; text: string; size?: "lg" | "sm" }
   | { type: "text"; body: string }
@@ -8,17 +16,21 @@ export type ContentBlock =
   | { type: "metrics"; items: { value: string; label: string }[] }
   | { type: "divider" }
   | { type: "video"; src: string; caption?: string }
-  | { type: "highlight"; body: string };
+  | { type: "highlight"; body: string }
+  | { type: "motion-cards"; columns: 2 | 3; items: MotionCard[]; note?: string; intro?: string }
+  | { type: "timing-table"; items: { animation: string; kind: string; duration: string; easing: string }[] };
 
 export interface Project {
   id: number;
   slug: string;
   title: string;
+  titleEn: string;
   category: string;
   image?: string;
   banner?: string;
   gif?: string;
   video?: string;
+  heroGrid?: string[];
   size: "normal" | "tall" | "wide";
   blocks: ContentBlock[];
   blocksEn: ContentBlock[];
@@ -29,6 +41,7 @@ export const projects: Project[] = [
     id: 1,
     slug: "controle-de-acesso",
     title: "Controle de Acesso",
+    titleEn: "Access Control",
     category: "Product Design",
     size: "wide",
     video: "/img/desk-showcase.mp4",
@@ -135,6 +148,7 @@ export const projects: Project[] = [
     id: 2,
     slug: "apepe-cadastro",
     title: "apepê · Cadastro",
+    titleEn: "apepê · Sign-up",
     category: "Product Design",
     size: "wide",
     video: "/img/project-1/thumbnail.mp4",
@@ -281,6 +295,7 @@ export const projects: Project[] = [
     id: 9,
     slug: "redesign-physical-tracking",
     title: "Redesign Physical Tracking",
+    titleEn: "Redesign Physical Tracking",
     category: "Interface Design",
     size: "normal",
     video: "/img/physical/physical-showcase.mp4",
@@ -355,6 +370,173 @@ export const projects: Project[] = [
       { type: "image", src: "/img/physical/4.jpg", alt: "Bonus goal — before and after", caption: "Weekly goals — bonus goal" },
       { type: "divider" },
       { type: "highlight", body: "The project went live, but usage data has not yet been formally collected." },
+    ],
+  },
+  {
+    id: 3,
+    slug: "motion-design-apepe",
+    title: "Dando movimento à interface",
+    titleEn: "Bringing the interface to life",
+    category: "Motion Design",
+    size: "normal",
+    video: "/img/motion apepe/thumbnail.mp4",
+    blocks: [
+      { type: "label", text: "Motion Design · Rive · apepê · 2024" },
+      { type: "heading", text: "Dando movimento à interface", size: "lg" },
+      { type: "text", body: "Animações criadas para comunicar estados do sistema sem depender de texto — reduzindo a incerteza do usuário em momentos críticos da jornada. Produzidas em Rive e exportadas em MP4." },
+      { type: "divider" },
+      { type: "label", text: "FLUXO DE PAGAMENTO" },
+      { type: "text", body: "As três animações formam uma sequência contínua — o estado de loading transita diretamente para success ou error sem corte." },
+      { type: "motion-cards", columns: 3, items: [
+        {
+          src: "/img/motion apepe/Pagamento-Loading.mp4",
+          title: "Processando pagamento",
+          badges: [{ text: "Loading" }, { text: "Loop · linear" }],
+          description: "Loading indeterminado enquanto a transação é processada.",
+        },
+        {
+          src: "/img/motion apepe/Pagamento-SUCESSO.mp4",
+          title: "Pagamento aprovado",
+          badges: [{ text: "Feedback" }, { text: "3s · cubic bezier" }],
+          description: "Continuidade a partir do estado de loading.",
+          variant: "success",
+        },
+        {
+          src: "/img/motion apepe/Pagamento-ERRO.mp4",
+          title: "Pagamento recusado",
+          badges: [{ text: "Feedback" }, { text: "3s · cubic bezier" }],
+          description: "Continuidade a partir do estado de loading.",
+          variant: "error",
+        },
+      ], note: "As animações de sucesso e erro continuam diretamente do estado de loading — sem corte ou transição separada. Esse padrão seamless elimina a percepção de \"quebra\" no feedback ao usuário." },
+      { type: "divider" },
+      { type: "label", text: "ESTADOS ISOLADOS" },
+      { type: "motion-cards", columns: 2, items: [
+        {
+          src: "/img/motion apepe/CEP Loading.mp4",
+          title: "Validação de CEP",
+          badges: [{ text: "Loading" }, { text: "Loop · linear" }],
+          description: "Carregamento enquanto o endereço é encontrado na base.",
+        },
+        {
+          src: "/img/motion apepe/erro internet.mp4",
+          title: "Erro de internet",
+          badges: [{ text: "Edge case" }, { text: "Loop · linear" }],
+          description: "Estado exibido quando há perda de conexão com a internet.",
+        },
+      ]},
+      { type: "divider" },
+      { type: "label", text: "ONBOARDING — LIMPEZA DE QUARTO" },
+      { type: "text", body: "Sequência de 3 banners animados apresentando o serviço. Cada banner anima na entrada e permanece estático. Exibidos em carrossel no onboarding do app." },
+      { type: "motion-cards", columns: 3, items: [
+        {
+          src: "/img/motion apepe/Onboarding.mp4",
+          title: "Slide 1",
+          badges: [{ text: "Entrada" }, { text: "1s · cubic bezier" }],
+          description: "",
+        },
+        {
+          src: "/img/motion apepe/onboarding 2.mp4",
+          title: "Slide 2",
+          badges: [{ text: "Entrada" }, { text: "1s · cubic bezier" }],
+          description: "",
+        },
+        {
+          src: "/img/motion apepe/onboarding 3.mp4",
+          title: "Slide 3",
+          badges: [{ text: "Entrada" }, { text: "1s · cubic bezier" }],
+          description: "",
+        },
+      ]},
+      { type: "divider" },
+      { type: "label", text: "REFERÊNCIA DE TIMING" },
+      { type: "timing-table", items: [
+        { animation: "Validação de CEP",   kind: "Loading",   duration: "Loop", easing: "Linear" },
+        { animation: "Loading pagamento",  kind: "Loading",   duration: "Loop", easing: "Linear" },
+        { animation: "Pagamento aprovado", kind: "Feedback",  duration: "3s",   easing: "Cubic bezier" },
+        { animation: "Pagamento recusado", kind: "Feedback",  duration: "3s",   easing: "Cubic bezier" },
+        { animation: "Erro de internet",   kind: "Edge case", duration: "Loop", easing: "Linear" },
+        { animation: "Banners onboarding", kind: "Entrada",   duration: "1s",   easing: "Cubic bezier" },
+      ]},
+    ],
+    blocksEn: [
+      { type: "label", text: "Motion Design · Rive · apepê · 2024" },
+      { type: "heading", text: "Feedback & Loading Animations", size: "lg" },
+      { type: "text", body: "Animations designed to communicate system states without relying on text — reducing user uncertainty at critical moments in the journey. Produced in Rive and exported as MP4." },
+      { type: "divider" },
+      { type: "label", text: "PAYMENT FLOW" },
+      { type: "text", body: "The three animations form a continuous sequence — the loading state transitions directly to success or error without a cut." },
+      { type: "motion-cards", columns: 3, items: [
+        {
+          src: "/img/motion apepe/Pagamento-Loading.mp4",
+          title: "Processing payment",
+          badges: [{ text: "Loading" }, { text: "Loop · linear" }],
+          description: "Indeterminate loading while the transaction is being processed.",
+        },
+        {
+          src: "/img/motion apepe/Pagamento-SUCESSO.mp4",
+          title: "Payment approved",
+          badges: [{ text: "Feedback" }, { text: "3s · cubic bezier" }],
+          description: "Continues seamlessly from the loading state.",
+          variant: "success",
+        },
+        {
+          src: "/img/motion apepe/Pagamento-ERRO.mp4",
+          title: "Payment declined",
+          badges: [{ text: "Feedback" }, { text: "3s · cubic bezier" }],
+          description: "Continues seamlessly from the loading state.",
+          variant: "error",
+        },
+      ], note: "The success and error animations continue directly from the loading state — no cut or separate transition. This seamless pattern eliminates the perceived \"break\" in user feedback." },
+      { type: "divider" },
+      { type: "label", text: "ISOLATED STATES" },
+      { type: "motion-cards", columns: 2, items: [
+        {
+          src: "/img/motion apepe/CEP Loading.mp4",
+          title: "ZIP code validation",
+          badges: [{ text: "Loading" }, { text: "Loop · linear" }],
+          description: "Loading while the address is found in the database.",
+        },
+        {
+          src: "/img/motion apepe/erro internet.mp4",
+          title: "Internet error",
+          badges: [{ text: "Edge case" }, { text: "Loop · linear" }],
+          description: "State displayed when internet connection is lost.",
+        },
+      ]},
+      { type: "divider" },
+      { type: "label", text: "ONBOARDING — ROOM CLEANING" },
+      { type: "text", body: "A sequence of 3 animated banners introducing the service. Each banner animates on entry and stays static. Displayed as a carousel in the app onboarding." },
+      { type: "motion-cards", columns: 3, items: [
+        {
+          src: "/img/motion apepe/Onboarding.mp4",
+          title: "Slide 1",
+          badges: [{ text: "Enter" }, { text: "1s · cubic bezier" }],
+          description: "",
+        },
+        {
+          src: "/img/motion apepe/onboarding 2.mp4",
+          title: "Slide 2",
+          badges: [{ text: "Enter" }, { text: "1s · cubic bezier" }],
+          description: "",
+        },
+        {
+          src: "/img/motion apepe/onboarding 3.mp4",
+          title: "Slide 3",
+          badges: [{ text: "Enter" }, { text: "1s · cubic bezier" }],
+          description: "",
+        },
+      ]},
+      { type: "divider" },
+      { type: "label", text: "TIMING REFERENCE" },
+      { type: "timing-table", items: [
+        { animation: "ZIP code validation",  kind: "Loading",    duration: "Loop", easing: "Linear" },
+        { animation: "Payment loading",      kind: "Loading",    duration: "Loop", easing: "Linear" },
+        { animation: "Payment approved",     kind: "Feedback",   duration: "3s",   easing: "Cubic bezier" },
+        { animation: "Payment declined",     kind: "Feedback",   duration: "3s",   easing: "Cubic bezier" },
+        { animation: "Internet error",       kind: "Edge case",  duration: "Loop", easing: "Linear" },
+        { animation: "Onboarding banners",   kind: "Enter",      duration: "1s",   easing: "Cubic bezier" },
+      ]},
     ],
   },
 ];
