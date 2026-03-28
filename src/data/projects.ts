@@ -26,6 +26,7 @@ export interface Project {
   title: string;
   titleEn: string;
   category: string;
+  tags?: string[];
   image?: string;
   banner?: string;
   gif?: string;
@@ -43,6 +44,7 @@ export const projects: Project[] = [
     title: "Controle de Acesso",
     titleEn: "Access Control",
     category: "Product Design",
+    tags: ["UX Research", "Pesquisa de Campo", "B2B"],
     size: "wide",
     video: "/img/desk-showcase.mp4",
     blocks: [
@@ -150,6 +152,7 @@ export const projects: Project[] = [
     title: "apepê · Cadastro",
     titleEn: "apepê · Sign-up",
     category: "Product Design",
+    tags: ["Usability Testing", "UX Research", "B2C"],
     size: "wide",
     video: "/img/project-1/thumbnail.mp4",
     blocks: [
@@ -297,6 +300,7 @@ export const projects: Project[] = [
     title: "Redesign Physical Tracking",
     titleEn: "Redesign Physical Tracking",
     category: "Interface Design",
+    tags: ["UI Design", "Design System", "Mobile"],
     size: "normal",
     video: "/img/physical/physical-showcase.mp4",
     blocks: [
@@ -378,6 +382,7 @@ export const projects: Project[] = [
     title: "Dando movimento à interface",
     titleEn: "Bringing the interface to life",
     category: "Motion Design",
+    tags: ["Rive", "Motion Design", "Mobile"],
     size: "normal",
     video: "/img/motion apepe/thumbnail.mp4",
     blocks: [

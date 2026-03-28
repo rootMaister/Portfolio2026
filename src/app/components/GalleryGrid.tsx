@@ -143,7 +143,7 @@ function GalleryCard({ item, index, onHoverChange, onProjectClick }: CardProps) 
 
       {/* Info overlay */}
       <motion.div
-        className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-1"
+        className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-2"
         animate={{ y: isHovered ? 0 : 12, opacity: isHovered ? 1 : 0 }}
         transition={{ duration: 0.35, ease: "easeOut" }}
       >
@@ -156,6 +156,19 @@ function GalleryCard({ item, index, onHoverChange, onProjectClick }: CardProps) 
         <span className="text-white" style={{ fontSize: "18px", fontWeight: 500 }}>
           {title}
         </span>
+        {item.tags && (
+          <div className="flex flex-wrap gap-[6px] pt-1">
+            {item.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-white/80 border border-white/30 rounded-full px-[10px] py-[3px] backdrop-blur-sm"
+                style={{ fontSize: "11px", fontWeight: 400 }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </motion.div>
 
       {/* Corner accent */}
