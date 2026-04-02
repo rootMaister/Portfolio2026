@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, useMotionValue, useSpring } from "motion/react";
 
@@ -6,7 +6,7 @@ interface CustomCursorProps {
   isHovering: boolean;
 }
 
-export function CustomCursor({ isHovering }: CustomCursorProps) {
+function CursorInner({ isHovering }: CustomCursorProps) {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   const [visible, setVisible] = useState(false);
@@ -102,4 +102,12 @@ export function CustomCursor({ isHovering }: CustomCursorProps) {
     </>,
     document.body
   );
+}
+
+const isDesktop =
+  typeof window !== "undefined" && window.matchMedia("(pointer: fine)").matches;
+
+export function CustomCursor({ isHovering }: CustomCursorProps) {
+  if (!isDesktop) return null;
+  return <CursorInner isHovering={isHovering} />;
 }

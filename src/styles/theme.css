@@ -135,7 +135,12 @@
 
   html {
     font-size: var(--font-size);
-    cursor: none;
+  }
+
+  @media (pointer: fine) {
+    html {
+      cursor: none;
+    }
   }
 
   h1 {

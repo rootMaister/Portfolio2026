@@ -8,9 +8,14 @@
 }
 
 * {
-  cursor: none !important;
   scrollbar-width: thin;
   scrollbar-color: #d0d0d0 transparent;
+}
+
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
 }
 
 *::-webkit-scrollbar {
