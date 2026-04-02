@@ -40,6 +40,16 @@ function GalleryCard({ item, index, onHoverChange, onProjectClick }: CardProps) 
     img.src = item.gif;
   }, [item.gif]);
 
+  // Show first frame of video on mount (for touch devices where hover never fires)
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !item.video) return;
+    const show = () => { video.currentTime = 0.001; };
+    video.addEventListener("loadeddata", show);
+    if (video.readyState >= 2) show();
+    return () => video.removeEventListener("loadeddata", show);
+  }, [item.video]);
+
   const handleEnter = () => {
     setIsHovered(true);
     onHoverChange(true);
@@ -75,6 +85,7 @@ function GalleryCard({ item, index, onHoverChange, onProjectClick }: CardProps) 
       className="relative overflow-hidden rounded-[4px] cursor-none"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
+      onTouchStart={handleEnter}
       onClick={() => onProjectClick(item.id)}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
@@ -130,6 +141,7 @@ function GalleryCard({ item, index, onHoverChange, onProjectClick }: CardProps) 
             preload="metadata"
             className={hasStaticBase ? "absolute inset-0 w-full h-full object-cover transition-opacity duration-500" : "w-full h-auto max-h-[56.25rem] object-contain block"}
             style={hasStaticBase ? { opacity: isHovered ? 1 : 0 } : undefined}
+            preload="auto"
           />
         )}
       </motion.div>

@@ -327,7 +327,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
             className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
           >
           <motion.div
-            className="relative w-full sm:w-[55%] max-h-[90vh] bg-white rounded-[8px] overflow-y-auto cursor-none pointer-events-auto modal-scrollbar"
+            className="relative w-full md:w-[99%] xl:w-[55%] max-h-[90vh] md:max-h-[99vh] xl:max-h-[90vh] bg-white rounded-[8px] overflow-y-auto cursor-none pointer-events-auto modal-scrollbar"
             style={{ fontFamily: "'Inter', sans-serif" } as React.CSSProperties}
             initial={{ opacity: 0, y: 40, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}

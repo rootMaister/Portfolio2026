@@ -388,7 +388,7 @@ export const projects: Project[] = [
     blocks: [
       { type: "label", text: "Motion Design · Rive · apepê · 2024" },
       { type: "heading", text: "Dando movimento à interface", size: "lg" },
-      { type: "text", body: "Animações criadas para comunicar estados do sistema sem depender de texto — reduzindo a incerteza do usuário em momentos críticos da jornada. Produzidas em Rive e exportadas em MP4." },
+      { type: "text", body: "Animações criadas para comunicar estados do app e trazer leveza — em momentos críticos da jornada. Produzidas em Rive." },
       { type: "divider" },
       { type: "label", text: "FLUXO DE PAGAMENTO" },
       { type: "text", body: "As três animações formam uma sequência contínua — o estado de loading transita diretamente para success ou error sem corte." },
