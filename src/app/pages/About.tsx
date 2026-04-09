@@ -63,6 +63,7 @@ export default function About() {
             src={imgSuaFoto}
             alt="Vitor C. Costa"
             className="w-full h-full object-cover"
+            style={{ outline: "1px solid rgba(0,0,0,0.06)", outlineOffset: "-1px" }}
           />
         </motion.div>
       </section>

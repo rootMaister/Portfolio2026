@@ -309,7 +309,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
   }, [onClose]);
 
   return createPortal(
-    <AnimatePresence>
+    <AnimatePresence initial={false}>
       {project && (
         <>
           {/* Backdrop */}
@@ -342,7 +342,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                 style={{ backgroundColor: "rgba(0,0,0,0.35)", backdropFilter: "blur(6px)", color: "#fff" }}
                 aria-label="Fechar"
                 whileHover={{ scale: 1.15, rotate: 90, backgroundColor: "rgba(0,0,0,0.55)" }}
-                whileTap={{ scale: 0.85 }}
+                whileTap={{ scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
               >
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none">

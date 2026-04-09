@@ -89,6 +89,7 @@ function GalleryCard({ item, index, onHoverChange, onProjectClick }: CardProps) 
       onClick={() => onProjectClick(item.id)}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
+      whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.6, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
     >
       {/* Thumbnail */}
@@ -96,6 +97,7 @@ function GalleryCard({ item, index, onHoverChange, onProjectClick }: CardProps) 
         animate={{ scale: isHovered ? 1.04 : 1 }}
         transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         className="relative"
+        style={{ willChange: "transform" }}
       >
         {/* Static image */}
         {item.image && (
@@ -103,6 +105,7 @@ function GalleryCard({ item, index, onHoverChange, onProjectClick }: CardProps) 
             src={item.image}
             alt={item.title}
             className="w-full h-auto max-h-[56.25rem] object-contain block"
+            style={{ outline: "1px solid rgba(0,0,0,0.06)", outlineOffset: "-1px" }}
           />
         )}
 
