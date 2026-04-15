@@ -82,7 +82,7 @@ function GalleryCard({ item, index, onHoverChange, onProjectClick }: CardProps) 
 
   return (
     <motion.div
-      className="relative overflow-hidden rounded-[4px] cursor-none"
+      className="relative overflow-hidden cursor-none"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
       onTouchStart={handleEnter}
@@ -198,7 +198,7 @@ function GalleryCard({ item, index, onHoverChange, onProjectClick }: CardProps) 
 
 export function GalleryGrid({ onHoverChange, onProjectClick }: GalleryGridProps) {
   return (
-    <ResponsiveMasonry columnsCountBreakPoints={{ 640: 1, 1024: 2, 1280: 3 }}>
+    <ResponsiveMasonry columnsCountBreakPoints={{ 640: 1, 1024: 2 }}>
       <Masonry gutter="0px">
         {projects.map((item, index) => (
           <GalleryCard

@@ -6,7 +6,7 @@ export const t = {
       lang: "english",
     },
     hero: {
-      subtitle: "Há 6 anos transformando pesquisa em interface e interface em resultado.",
+      subtitle: "Há 6 anos transformando pesquisa em interface e interface em resultados.",
     },
     footer: {
       rights: "© 2026 VITOR C. COSTA. - TODOS OS DIREITOS RESERVADOS.",
@@ -15,8 +15,7 @@ export const t = {
       view: "Ver",
     },
     about: {
-      role: "UX/UI & PRODUCT DESIGNER",
-      bio: "Designer com 6 anos de experiência em produtos digitais — apps para consumidores, plataformas B2B e ecossistemas integrados — atuando em todo o ciclo do produto, da descoberta à entrega. Forte atuação em Design System, pesquisa com usuários e colaboração próxima com produto e engenharia. Formado em Análise e Desenvolvimento de Sistemas, o que me permite dialogar com clareza com times técnicos. De São Paulo, Brasil — fora das telas, fotógrafo, atleta do primeiro time LGBTQIAP+ de Rugby do Brasil e curioso por natureza: 4 países visitados e contando.",
+      bio: "Designer de produto. Há 6 anos desenhando, construindo e entregando produtos de ponta a ponta - do discovery ao handoff para o desenvolvimento.",
       sectionExperience: "EXPERIÊNCIA",
       sectionSkills: "HABILIDADES",
       sectionEducation: "FORMAÇÃO",
@@ -35,22 +34,22 @@ export const t = {
     ],
     experiences: [
       {
-        title: "UX/UI Designer",
-        company: "All Easy",
+        title: "UI Designer",
+        company: "All Easy, alocado na Prudential do Brasil",
         period: "2025 — Atual",
-        description: "Criação e manutenção de design system escalável adotado por todos os squads do produto. Redesigns com impacto direto na redução de chamados relacionados à interface e padronização visual consistente em toda a plataforma. Uso de IA como acelerador no processo de pesquisa e testes de usabilidade.",
+        description: "UI Designer responsável pela concepção, construção e manutenção do Design System e redesign do app focado em consistência visual. Impacto percebido na redução de chamados do suporte e aceleração do desenvolvimento.",
       },
       {
         title: "Product Designer",
         company: "apepê",
         period: "2021 — 2025",
-        description: "Condução de todo o ciclo de design em app B2C com +14k usuários. Design que contribuiu para o crescimento da base de 1.500 para 9.000+ usuários — com foco em clareza, recorrência e confiança na navegação. Design system para múltiplas squads com handoff técnico e colaboração próxima com engenharia e produto.",
+        description: "Atuando de ponta ponta no ecossistema integrado de aplicativos do apepê, contribui na construção de produtos e soluções baseadas em escalabilidade que impactaram +14 mil usuários. ",
       },
       {
         title: "UX/UI Designer & Product Owner",
         company: "Spaceneedle Tecnologia",
         period: "2020 — 2021",
-        description: "Atuação como Product Owner em projeto de dashboard analítico — fazendo a ponte entre o time de desenvolvimento responsável pelo processamento de dados e as necessidades do negócio, além do design das interfaces. O projeto resultou em redução de mais de 90% no tempo de processamento.",
+        description: "Design de plataforma análise de carteira da Bayer, responsável pela construção do fluxo de processamento de dados . Solução que contribuiu para a redução de 90% do tempo de processamento.",
       },
     ],
   },

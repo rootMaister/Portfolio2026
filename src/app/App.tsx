@@ -12,7 +12,7 @@ import About from "./pages/About";
 import { useLang } from "../context/LanguageContext";
 import { t } from "../data/translations";
 
-const NAME = "VITOR C. COSTA";
+const NAME = "VITOR COSTA";
 
 function AnimatedName() {
   return (
@@ -64,12 +64,10 @@ function Home() {
     >
       <CustomCursor isHovering={isHovering} />
 
-      {/* Header */}
-      <header className="px-5 sm:px-10 pt-10 pb-16">
-        <Nav />
-
+      {/* Hero */}
+      <div className="px-5 sm:px-10 pt-[100px] pb-16">
         {/* Hero name — animated letters */}
-        <div className="mt-[9vh] mb-[9vh]">
+        <div className="mt-[9vh] mb-[9vh] max-w-[80%] mx-auto">
           <AnimatedName />
         </div>
 
@@ -79,9 +77,9 @@ function Home() {
             {tr.hero.subtitle}
           </p>
         </div>
-      </header>
+      </div>
 
-      <main className="px-5 sm:px-10 pb-16">
+      <main className="px-5 sm:px-10 pb-16 max-w-[80%] mx-auto">
         <GalleryGrid
           onHoverChange={setIsHovering}
           onProjectClick={setSelectedProjectId}
@@ -133,13 +131,27 @@ function ScrollSmootherWrapper({ children }: { children: React.ReactNode }) {
   );
 }
 
+function FixedHeader() {
+  return (
+    <header
+      className="fixed top-0 left-0 right-0 z-50 px-5 sm:px-10 pt-10 pb-4"
+      style={{ mixBlendMode: "difference" }}
+    >
+      <Nav />
+    </header>
+  );
+}
+
 export default function App() {
   return (
-    <ScrollSmootherWrapper>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </ScrollSmootherWrapper>
+    <>
+      <FixedHeader />
+      <ScrollSmootherWrapper>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </ScrollSmootherWrapper>
+    </>
   );
 }
