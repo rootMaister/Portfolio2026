@@ -87,6 +87,31 @@ export default function About() {
                   ))}
                 </div>
               </section>
+              
+              {/* Education */}
+              <section className="px-5 sm:px-10 lg:px-[120px] py-[60px]">
+                <motion.div className="w-full h-px bg-[#ebebeb] mb-[44px]" {...inView()} />
+                <motion.p
+                  className="text-[#666] text-[14px] tracking-[2.5px] uppercase font-medium mb-[56px]"
+                  {...inView(0.05)}
+                >
+                  {about.sectionEducation}
+                </motion.p>
+                <motion.div className="flex flex-col sm:flex-col sm:items-baseline gap-1 sm:gap-[56px]" {...inView(0.1)}>
+                  <div className="flex sm:flex-row">
+                    <p className="text-[#111] text-[16px] font-medium sm:w-[160px] sm:shrink-0">UNIP</p>
+                    <p className="text-[#666] text-[14px] font-light">{about.educationDesc}</p>
+                  </div>
+                  <div className="flex sm:flex-row">
+                    <p className="text-[#111] text-[16px] font-medium sm:w-[160px] sm:shrink-0">SENAI</p>
+                    <p className="text-[#666] text-[14px] font-light">{about.educationDesc2}</p>
+                  </div>
+                  <div className="flex sm:flex-row">
+                    <p className="text-[#111] text-[16px] font-medium sm:w-[160px] sm:shrink-0">SENAI</p>
+                    <p className="text-[#666] text-[14px] font-light">{about.educationDesc3}</p>
+                  </div>
+                </motion.div>
+              </section>
 
               {/* Skills */}
               <section className="px-5 sm:px-10 lg:px-[120px] py-[60px]">
@@ -109,20 +134,6 @@ export default function About() {
                 </div>
               </section>
 
-              {/* Education */}
-              <section className="px-5 sm:px-10 lg:px-[120px] py-[60px]">
-                <motion.div className="w-full h-px bg-[#ebebeb] mb-[44px]" {...inView()} />
-                <motion.p
-                  className="text-[#666] text-[14px] tracking-[2.5px] uppercase font-medium mb-[56px]"
-                  {...inView(0.05)}
-                >
-                  {about.sectionEducation}
-                </motion.p>
-                <motion.div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-[56px]" {...inView(0.1)}>
-                  <p className="text-[#111] text-[16px] font-medium sm:w-[160px] sm:shrink-0">UNIP</p>
-                  <p className="text-[#666] text-[14px] font-light">{about.educationDesc}</p>
-                </motion.div>
-              </section>
 
               {/* Resume */}
               <section className="px-5 sm:px-10 lg:px-[120px] py-[60px]">

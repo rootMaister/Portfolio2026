@@ -6,7 +6,7 @@ export const t = {
       lang: "english",
     },
     hero: {
-      subtitle: "Há 6 anos transformando pesquisa em interface e interface em resultados.",
+      subtitle: "UX/UI Designer com foco em UI",
     },
     footer: {
       rights: "© 2026 VITOR C. COSTA. - TODOS OS DIREITOS RESERVADOS.",
@@ -15,7 +15,7 @@ export const t = {
       view: "Ver",
     },
     about: {
-      bio: "Designer de produto. Há 6 anos desenhando, construindo e entregando produtos de ponta a ponta - do discovery ao handoff para o desenvolvimento.",
+      bio: "UX/UI Designer com foco em UI. Há 6 anos desenhando, construindo e entregando produtos digitais de ponta a ponta em contextos B2B, B2C, B2B2C e ecossistemas integrados. Especializado em Design de Interfaces, com forte experiência em Design Systems, prototipação avançada e colaboração próxima com times de produto e engenharia. Graduado em Análise e Desenvolvimento de Sistemas, o que me permite uma comunicação clara com equipes técnicas.",
       sectionExperience: "EXPERIÊNCIA",
       sectionSkills: "HABILIDADES",
       sectionEducation: "FORMAÇÃO",
@@ -24,12 +24,12 @@ export const t = {
       resumeLink: "Baixar PDF",
       resumeDesc: "CV completo em português · PDF",
       educationDesc: "Análise e Desenvolvimento de Sistemas · Tecnólogo · 2023",
+      educationDesc2: "Programação Fullstack · 2020",
+      educationDesc3: "Web Design · 2019",
     },
     skills: [
-      { label: "Ferramentas", value: "Figma (avançado)  ·  ProtoPie  ·  Framer  ·  Photoshop  ·  Notion" },
-      { label: "Design", value: "Wireframing  ·  Prototipação  ·  Design System  ·  UI Design  ·  Design Responsivo  ·  Micro interações  ·  Documentação" },
-      { label: "Pesquisa", value: "Entrevistas com usuários  ·  Mapeamento de jornada  ·  Benchmark  ·  Testes de usabilidade" },
-      { label: "Produto & Gestão", value: "Planejamento estratégico  ·  Gestão de backlog  ·  Colaboração com engenharia  ·  Handoff técnico" },
+      { label: "Ferramentas", value: "Figma (avançado)  ·  ProtoPie  ·  Framer  ·  Adobe Suite" },
+      { label: "Design", value: "Prototipação  ·  Design System  ·  UI Design  ·  Design Responsivo  ·  Micro interações  ·  Handoff técnico · Entrevistas com usuários  ·  Mapeamento de jornada  ·  Benchmark  ·  Testes de usabilidade" },
       { label: "Idiomas", value: "Português (nativo)  ·  Inglês (avançado)" },
     ],
     experiences: [

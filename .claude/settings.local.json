@@ -28,7 +28,8 @@
       "Bash(cp \"c:/Users/vcost/Downloads/Portfolio2026/src/app/components/img/physical-showcase.mp4\" \"c:/Users/vcost/Downloads/Portfolio2026/public/img/\")",
       "Bash(cp \"c:/Users/vcost/Downloads/Portfolio2026/src/app/components/img/access-control.gif\" \"c:/Users/vcost/Downloads/Portfolio2026/public/img/\")",
       "Bash(cp \"c:/Users/vcost/Downloads/Portfolio2026/src/app/components/img/name-hero.svg\" \"c:/Users/vcost/Downloads/Portfolio2026/public/img/\")",
-      "Bash(cp \"c:/Users/vcost/Downloads/Portfolio2026/src/app/components/img/IMG_5913 SMALL.jpg\" \"c:/Users/vcost/Downloads/Portfolio2026/public/img/\")"
+      "Bash(cp \"c:/Users/vcost/Downloads/Portfolio2026/src/app/components/img/IMG_5913 SMALL.jpg\" \"c:/Users/vcost/Downloads/Portfolio2026/public/img/\")",
+      "mcp__claude_ai_Figma__get_screenshot"
     ]
   }
 }
