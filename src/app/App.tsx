@@ -1,53 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Routes, Route, useLocation } from "react-router";
-import { gsap } from "gsap";
+import { gsap, wrap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
-import { motion } from "motion/react";
 import { CustomCursor } from "./components/CustomCursor";
 import { GalleryGrid } from "./components/GalleryGrid";
-import { Nav } from "./components/Nav";
 import { ProjectModal } from "./components/ProjectModal";
-import About from "./pages/About";
 import { useLang } from "../context/LanguageContext";
 import { t } from "../data/translations";
-
-const NAME = "VITOR COSTA";
-
-function AnimatedName() {
-  return (
-    <div
-      className="w-full flex items-end overflow-visible select-none"
-      style={{ lineHeight: 1 }}
-    >
-      {NAME.split("").map((char, i) =>
-        char === " " ? (
-          <span key={i} style={{ flex: "0.6" }} />
-        ) : (
-          <motion.span
-            key={i}
-            whileHover={{ y: "-12%" }}
-            transition={{ type: "spring", stiffness: 600, damping: 28 }}
-            style={{
-              flex: 1,
-              textAlign: "center",
-              letterSpacing: "-0.04em",
-              fontFamily: "'Inter', sans-serif",
-              fontWeight: 900,
-              WebkitTextStroke: "5.5px black",
-              fontSize: "clamp(3.5rem, 8.8vw, 9rem)",
-              color: "#000",
-              display: "block",
-              cursor: "default",
-            }}
-          >
-            {char}
-          </motion.span>
-        )
-      )}
-    </div>
-  );
-}
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -56,6 +16,7 @@ function Home() {
   const [selectedProjectId, setSelectedProjectId] = useState<number | null>(null);
   const { lang } = useLang();
   const tr = t[lang];
+  const about = tr.about;
 
   return (
     <div
@@ -64,22 +25,25 @@ function Home() {
     >
       <CustomCursor isHovering={isHovering} />
 
-      {/* Hero */}
-      <div className="px-5 sm:px-10 pt-[100px] pb-16">
-        {/* Hero name — animated letters */}
-        <div className="mt-[9vh] mb-[9vh] max-w-[80%] mx-auto">
-          <AnimatedName />
-        </div>
-
-        {/* Subtitle row — lines + centered text */}
-        <div className="flex items-center gap-4">
-          <p className="text-[#6e6e6e] text-[16px] tracking-[0.6px] font-light whitespace-nowrap w-full text-center">
-            {tr.hero.subtitle}
+      <main className="px-5 sm:px-10 pb-16 max-w-[80%] mx-auto">
+        {/* Hero */}
+        <div className="pt-[100px] pb-16">
+          <h1
+            className="text-[#0a0a0a] text-[40px] sm:text-[52px] leading-[1.1] mb-5"
+            style={{ fontFamily: "'Hedvig Letters Serif', serif", fontWeight: 400 }}
+          >
+            Vitor C. Costa
+          </h1>
+          {/* <h2>UX/UI Designer</h2> */}
+          <p className="text-[#555] text-[14px] leading-[24px] font-light w-full lg:w-1/2" style={{textWrap: "balance", WebkitFontSmoothing: "antialiased"}}>
+            {about.bio}
           </p>
         </div>
-      </div>
 
-      <main className="px-5 sm:px-10 pb-16 max-w-[80%] mx-auto">
+        <p className="text-[#999] text-[12px] tracking-[2px] uppercase font-medium mb-8">
+          {tr.home.selectedWorks}
+        </p>
+
         <GalleryGrid
           onHoverChange={setIsHovering}
           onProjectClick={setSelectedProjectId}
@@ -119,7 +83,6 @@ function ScrollSmootherWrapper({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  // Scroll to top on route change
   useEffect(() => {
     smootherRef.current?.scrollTo(0, false);
   }, [location.pathname]);
@@ -131,13 +94,21 @@ function ScrollSmootherWrapper({ children }: { children: React.ReactNode }) {
   );
 }
 
-function FixedHeader() {
+function LangToggle() {
+  const { lang, toggle } = useLang();
+  const tr = t[lang].nav;
+
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 px-5 sm:px-10 pt-10 pb-4"
+      className="fixed top-0 right-0 z-50 px-5 sm:px-10 pt-10 pb-4"
       style={{ mixBlendMode: "difference" }}
     >
-      <Nav />
+      {/* <button
+        onClick={toggle}
+        className="cursor-none text-white text-[14px] tracking-[0.96px] opacity-70 hover:opacity-100 transition-opacity"
+      >
+        {tr.lang}
+      </button> */}
     </header>
   );
 }
@@ -145,11 +116,10 @@ function FixedHeader() {
 export default function App() {
   return (
     <>
-      <FixedHeader />
+      <LangToggle />
       <ScrollSmootherWrapper>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
         </Routes>
       </ScrollSmootherWrapper>
     </>

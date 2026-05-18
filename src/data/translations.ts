@@ -5,6 +5,9 @@ export const t = {
       about: "Sobre mim",
       lang: "english",
     },
+    home: {
+      selectedWorks: "Trabalhos selecionados",
+    },
     hero: {
       subtitle: "UX/UI Designer com foco em UI",
     },
@@ -15,7 +18,7 @@ export const t = {
       view: "Ver",
     },
     about: {
-      bio: "UX/UI Designer com foco em UI. Há 6 anos desenhando, construindo e entregando produtos digitais de ponta a ponta em contextos B2B, B2C, B2B2C e ecossistemas integrados. Especializado em Design de Interfaces, com forte experiência em Design Systems, prototipação avançada e colaboração próxima com times de produto e engenharia. Graduado em Análise e Desenvolvimento de Sistemas, o que me permite uma comunicação clara com equipes técnicas.",
+      bio: "Há 6 anos desenhando produtos B2B, B2C e ecossistemas integrados de ponta a ponta. Especializado em UI, Design System e Prototipação Avançada.",
       sectionExperience: "EXPERIÊNCIA",
       sectionSkills: "HABILIDADES",
       sectionEducation: "FORMAÇÃO",
@@ -59,6 +62,9 @@ export const t = {
       work: "My work",
       about: "About me",
       lang: "português",
+    },
+    home: {
+      selectedWorks: "Selected works",
     },
     hero: {
       subtitle: "6 years turning research into interface and interface into results.",
